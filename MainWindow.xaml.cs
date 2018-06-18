@@ -1,12 +1,21 @@
 
 
-Modify the MathsOperators project in the \Visual C# Step by Step\Chapter 2\MathsOperators folder to work with double type rather than int type.
+Create a simple WPF application that consists of a simple form with three controls:
+A text box for entering messages
+A label where the message is copied to
+A copy button that when is clicked the message in the textbox is copied to the label
+Make sure that label font size is 14 and its text is aligned in the center with a red background color. The button has yellow background color. Anchor the textbox to Top.
+
+
+ 
+
 
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,96 +26,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-namespace MathsOperators
+namespace Message_Display
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void calculateClick(object sender, RoutedEventArgs e)
+        private void copyClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if ((bool)addition.IsChecked)
-                    addValues();
-                else if ((bool)subtraction.IsChecked)
-                    subtractValues();
-                else if ((bool)multiplication.IsChecked)
-                    multiplyValues();
-                else if ((bool)division.IsChecked)
-                    divideValues();
-                else if ((bool)remainder.IsChecked)
-                    remainderValues();
-            }
-            catch (Exception caught)
-            {
-                expression.Text = "";
-                result.Text = caught.Message;
-            }
-        }
-
-        private void addValues()
-        {
-            double lhs = double.Parse(lhsOperand.Text);
-            double rhs = double.Parse(rhsOperand.Text);
-            double outcome;
-            outcome = lhs + rhs;
-            expression.Text = lhsOperand.Text + " + " + rhsOperand.Text;
-            result.Text = outcome.ToString();
-        }
-
-        private void subtractValues()
-        {
-            double lhs = double.Parse(lhsOperand.Text);
-            double rhs = double.Parse(rhsOperand.Text);
-            double outcome;
-            outcome = lhs - rhs;
-            expression.Text = lhsOperand.Text + " - " + rhsOperand.Text;
-            result.Text = outcome.ToString();
-        }
-
-        private void multiplyValues()
-        {
-            double lhs = double.Parse(lhsOperand.Text);
-            double rhs = double.Parse(rhsOperand.Text);
-            double outcome;
-            outcome = lhs * rhs;
-            expression.Text = lhsOperand.Text + " * " + rhsOperand.Text;
-            result.Text = outcome.ToString();
-        }
-
-        private void divideValues()
-        {
-            double lhs = double.Parse(lhsOperand.Text);
-            double rhs = double.Parse(rhsOperand.Text);
-            double outcome;
-            outcome = lhs / rhs;
-            expression.Text = lhsOperand.Text + " / " + rhsOperand.Text;
-            result.Text = outcome.ToString();
-        }
-
-        private void remainderValues()
-        {
-            double lhs = double.Parse(lhsOperand.Text);
-            double rhs = double.Parse(rhsOperand.Text);
-            double outcome;
-            outcome = lhs % rhs;
-            expression.Text = lhsOperand.Text + " % " + rhsOperand.Text;
-            result.Text = outcome.ToString();
-        }
-
-        private void quitClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            lblDisplay.Content = txtMessage.Text;
         }
     }
 }
